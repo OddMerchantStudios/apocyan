@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Odcqmob</title>
+<title>Hubris</title>
 <style>
     body {
         background-color: black;
@@ -15,16 +15,42 @@
     }
 
     .eye-icon {
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 500px; /* Adjust size of eye icon */
-        user-select: none; /* Prevents selection */
+        width: 500px;
+        height: 500px;
+        background-size: cover;
+    }
+
+    .eye-open {
+        background-image: url('open.png');
+    }
+
+    .eye-closed {
+        background-image: url('closed.png');
     }
 </style>
 </head>
 <body>
-    <div class="eye-icon">&#128065;</div> <!-- Unicode for eye symbol -->
+    <div class="eye-icon eye-open" id="eyeIcon"></div>
+
+    <script>
+        var eyeIcon = document.getElementById('eyeIcon');
+        function closeEye() {
+            eyeIcon.classList.remove('eye-closed');
+            eyeIcon.classList.add('eye-open');
+            setTimeout(openEye, 100);
+        }
+
+        function openEye() {
+            eyeIcon.classList.remove('eye-open');
+            eyeIcon.classList.add('eye-closed');
+        }
+
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max * 1000 + 5000);
+            }
+
+        var randomInterval = getRandomInt(10);
+        setInterval(closeEye, randomInterval);
+    </script>
 </body>
 </html>
